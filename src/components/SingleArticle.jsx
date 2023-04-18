@@ -5,13 +5,16 @@ import { useState, useEffect } from "react";
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     fetchArticleById(id)
       .then((data) => {
         setArticle(data.article);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -24,6 +27,10 @@ export default function SingleArticle() {
         console.log(error);
       });
   }, [id]);
+
+  if (isLoading) {
+    return <p className="loading">Loading...</p>;
+  }
 
   return (
     <div>
