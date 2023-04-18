@@ -1,7 +1,11 @@
-export default function Header() {
+import { Link } from "react-router-dom";
+
+export default function Header({ onClick }) {
   return (
     <header id="header">
-      <h1>News Now</h1>
+      <Link to={`/articles`}>
+        <h1>News Now</h1>
+      </Link>
     </header>
   );
 }
