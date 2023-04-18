@@ -6,23 +6,12 @@ export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  //   const { topic } = useParams();
-  //   console.log(topic);
   useEffect(() => {
-    //     if (topic) {
-    //       setIsLoading(true);
-    //       fetchArticlesByTopic(topic).then((response) => {
-    //         setArticles(response.articles);
-    //         console.log(response);
-    //         setIsLoading(false);
-    //       });
-    //     } else {
     setIsLoading(true);
     fetchArticles().then((response) => {
       setArticles(response.data.articles);
       setIsLoading(false);
     });
-    // }
   }, []);
 
   if (isLoading) {

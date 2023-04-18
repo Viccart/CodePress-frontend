@@ -11,9 +11,6 @@ function App() {
       <Nav />
       <main className="articles-list">
         <ArticlesList />
-        {/* <Routes>
-        <Route path="/articles/:topic?" element={<ArticlesList />} />
-      </Routes> */}
       </main>
     </div>
   );
