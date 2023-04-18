@@ -12,13 +12,19 @@ export const fetchTopics = () => {
 
 export const fetchArticles = () => {
   return newsAPI.get("/articles").then((response) => {
-    console.log(response);
     return response;
   });
 };
 
 export const fetchArticlesByTopic = (topic) => {
-  return newsAPI.get(`/items?category_name=${topic}`).then((response) => {
+  return newsAPI.get(`/articles?category_name=${topic}`).then((response) => {
+    return response.data;
+  });
+};
+
+export const fetchArticleById = (id) => {
+  return newsAPI.get(`/articles/${id}`).then((response) => {
+    console.log(response.data);
     return response.data;
   });
 };

@@ -8,21 +8,25 @@ export default function ArticlesList() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles().then((response) => {
-      setArticles(response.data.articles);
-      setIsLoading(false);
-    });
+    fetchArticles()
+      .then(({ data }) => {
+        setArticles(data.articles);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   return (
     <main className="articles">
       {articles.map((article) => {
         return (
-          <body>
+          <div>
             <Link to={`/articles/${article.article_id}`}>
               <section className="article-card" key={article.article_id}>
                 <img src={article.article_img_url} alt={`${article.title}`} />
@@ -33,7 +37,7 @@ export default function ArticlesList() {
                 </Link>
               </section>
             </Link>
-          </body>
+          </div>
         );
       })}
     </main>
