@@ -26,15 +26,11 @@ export default function ArticlesList() {
     <main className="articles">
       {articles.map((article) => {
         return (
-          <div>
+          <div key={article.article_id}>
             <Link to={`/articles/${article.article_id}`}>
-              <section className="article-card" key={article.article_id}>
+              <section className="article-card">
                 <img src={article.article_img_url} alt={`${article.title}`} />
                 <h3>{article.title}</h3>
-                <Link to={`/articles/${article.topic}`}>
-                  {" "}
-                  <p>{article.topic}</p>
-                </Link>
               </section>
             </Link>
           </div>
