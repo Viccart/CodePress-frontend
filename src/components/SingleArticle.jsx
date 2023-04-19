@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import { fetchArticleById, fetchCommentsByArticleId } from "../api";
+import { fetchArticleById } from "../api";
 import { useState, useEffect } from "react";
+import Comments from "./Comments";
 
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
-  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
@@ -15,13 +15,6 @@ export default function SingleArticle() {
       .then((data) => {
         setArticle(data.article);
         setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    fetchCommentsByArticleId(id)
-      .then((data) => {
-        setComments(data.comments);
       })
       .catch((error) => {
         console.log(error);
@@ -45,15 +38,8 @@ export default function SingleArticle() {
       </div>
       <br />
       <br />
-      <div className="comments-section">
-        <h3>Comments</h3>
-        {comments.map((comment) => (
-          <div key={comment.comment_id}>
-            <p>{comment.body}</p>
-            <p>By: {comment.author}</p>
-          </div>
-        ))}
-      </div>
+      <br />
+      <Comments />
     </div>
   );
 }
