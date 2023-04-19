@@ -65,6 +65,11 @@ button:hover {
   color: var(--secondary-color);
 }
 
+button:disabled {
+  background-color: white;
+  color: var(--secondary-color);
+}
+
 .navBar {
   height: 80px;
   background-color: var(--primary-color);

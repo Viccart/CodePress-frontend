@@ -33,3 +33,11 @@ export const fetchCommentsByArticleId = (id) => {
     return response.data;
   });
 };
+
+export const patchArticle = (id) => {
+  return newsAPI.patch(`/articles/${id}`, { inc_votes: 1 }).then(({ data }) => {
+    return data.article;
+  });
+};
+
+

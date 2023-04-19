@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
-import { fetchArticleById } from "../api";
+import { fetchArticleById, patchArticle } from "../api";
 import { useState, useEffect } from "react";
 import Comments from "./Comments";
 
 export default function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [votes, setVotes] = useState(0);
+  const [err, setErr] = useState("");
 
   const { id } = useParams();
 
@@ -15,6 +17,7 @@ export default function SingleArticle() {
       .then((data) => {
         setArticle(data.article);
         setIsLoading(false);
+        setVotes(data.article.votes);
       })
       .catch((error) => {
         console.log(error);
@@ -25,6 +28,15 @@ export default function SingleArticle() {
     return <p className="loading">Loading...</p>;
   }
 
+  const handleClick = () => {
+    const newVotes = votes + 1;
+    setVotes(newVotes);
+    patchArticle(id).catch(() => {
+      setVotes(votes);
+      setErr("something went wrong, try again later!");
+    });
+  };
+
   return (
     <div>
       <div id="full-article">
@@ -34,7 +46,11 @@ export default function SingleArticle() {
         <img src={article.article_img_url} alt={`${article.title}`} />
         <p className="article-body">{article.body}</p>
         <p>Date: {article.created_at}</p>
-        <p>Votes: {article.votes}</p>
+        <p>Votes: {votes}</p>
+        <button onClick={handleClick} disabled={votes === 1}>
+          Upvote
+        </button>
+        {err ? <p>{err}</p> : null}
       </div>
       <br />
       <br />
