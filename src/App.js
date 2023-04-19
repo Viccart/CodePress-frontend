@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 import { Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
 function App() {
   return (
