@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Comments from "./Comments";
 
 export default function SingleArticle() {
+  const [currentUser, setCurrentUser] = useState();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
@@ -55,7 +56,7 @@ export default function SingleArticle() {
       <br />
       <br />
       <br />
-      <Comments />
+      <Comments currentUser={currentUser} articleId={article.article_id} />
     </div>
   );
 }

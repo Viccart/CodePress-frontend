@@ -4,9 +4,11 @@ import Nav from "./components/Nav";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 import { Route, Routes } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState();
+
   return (
     <div className="App">
       <Header />
@@ -15,7 +17,10 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticlesList />} />
           <Route path="/articles" element={<ArticlesList />} />
-          <Route path="/articles/:id" element={<SingleArticle />} />
+          <Route
+            path="/articles/:id"
+            element={<SingleArticle currentUser={currentUser} />}
+          />
         </Routes>
       </main>
     </div>

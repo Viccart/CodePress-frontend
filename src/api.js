@@ -40,4 +40,8 @@ export const patchArticle = (id) => {
   });
 };
 
-
+export const postComment = (id) => {
+  return newsAPI.post(`/articles/${id}/comments`).then(({ data }) => {
+    return data.article;
+  });
+};
