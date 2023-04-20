@@ -5,6 +5,7 @@ import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
+import Login from "./components/Login";
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -12,11 +13,14 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Nav />
+      <Nav setCurrentUser={setCurrentUser} />
       <main className="articles-list">
         <Routes>
           <Route path="/" element={<ArticlesList />} />
-          <Route path="/articles" element={<ArticlesList />} />
+          <Route
+            path="/articles"
+            element={<ArticlesList currentUser={currentUser} />}
+          />
           <Route
             path="/articles/:id"
             element={<SingleArticle currentUser={currentUser} />}

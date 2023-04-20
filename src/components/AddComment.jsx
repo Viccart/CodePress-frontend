@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { postComment } from "../api";
 
-export default function AddComment({ currentUser, articleId }) {
+export default function AddComment({ articleId, isLoading, setComments }) {
   const [commentBody, setCommentBody] = useState("");
-  const [votes, setVotes] = useState(0);
-  const [date, setDate] = useState(new Date());
-
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -13,20 +10,19 @@ export default function AddComment({ currentUser, articleId }) {
     console.log("form submitted");
 
     const newComment = {
-      votes,
-      created_at: date,
-      author: currentUser,
+      username: "tickle122",
       body: commentBody,
       article_id: articleId,
     };
-    console.log(newComment);
+
     postComment(newComment).then((response) => {
+      setComments((prevComments) => [...prevComments, response.data]);
       setIsSubmitted(true);
     });
   };
 
   if (isSubmitted) {
-    return <h1>Your item has been listed 😁</h1>;
+    return <h2>Your comment has been submitted</h2>;
   }
 
   return (
@@ -40,7 +36,9 @@ export default function AddComment({ currentUser, articleId }) {
         onChange={(e) => setCommentBody(e.target.value)}
       ></textarea>
       <br></br>
-      <button type="submit">Submit Comment</button>
+      <button type="submit" disabled={isLoading}>
+        Submit Comment
+      </button>
     </form>
   );
 }

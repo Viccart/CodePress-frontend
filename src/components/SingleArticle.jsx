@@ -3,8 +3,7 @@ import { fetchArticleById, patchArticle } from "../api";
 import { useState, useEffect } from "react";
 import Comments from "./Comments";
 
-export default function SingleArticle() {
-  const [currentUser, setCurrentUser] = useState();
+export default function SingleArticle({ currentUser }) {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);

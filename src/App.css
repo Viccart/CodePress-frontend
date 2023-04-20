@@ -259,3 +259,8 @@ a:active {
 .comments-section div p:last-child {
   font-size: 0.8rem;
 }
+
+#users img {
+  height: 90px;
+  width: 100px;
+}

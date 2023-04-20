@@ -1,14 +1,13 @@
-import { fetchTopics } from "../api";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import React from "react";
 
-export default function Nav() {
+export default function Nav({ setCurrentUser }) {
   return (
     <nav className="navBar">
       <div className="dropdown">
         <button className="dropbtn">Categories</button>
       </div>
-      <button>Sort</button>
+      <button className="sort">Sort</button>
     </nav>
   );
 }

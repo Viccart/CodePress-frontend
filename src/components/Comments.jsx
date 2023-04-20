@@ -21,20 +21,25 @@ export default function Comments({ currentUser, articleId }) {
       });
   }, [id]);
 
-  if (isLoading) {
-    return <p className="loading">Loading...</p>;
-  }
-
   return (
     <div className="comments-section">
       <h4>Comments</h4>
-      {comments.map((comment) => (
-        <div key={comment.comment_id}>
-          <p>{comment.body}</p>
-          <p>By: {comment.author}</p>
-        </div>
-      ))}
-      <AddComment currentUser={currentUser} articleId={articleId} />
+      {isLoading ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        comments.map((comment) => (
+          <div key={comment.comment_id}>
+            <p>{comment.body}</p>
+            <p>By: {comment.author}</p>
+          </div>
+        ))
+      )}
+      <AddComment
+        currentUser={currentUser}
+        articleId={articleId}
+        isLoading={isLoading}
+        setComments={setComments}
+      />
     </div>
   );
 }
