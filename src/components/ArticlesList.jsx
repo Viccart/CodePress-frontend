@@ -1,22 +1,30 @@
 import { useState, useEffect } from "react";
-import { fetchArticles } from "../api";
-import { Link } from "react-router-dom";
+import { fetchArticles, fetchArticlesByTopic } from "../api";
+import { useParams, Link } from "react-router-dom";
 
 export default function ArticlesList({ currentUser }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { category } = useParams();
+
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles()
-      .then(({ data }) => {
-        setArticles(data.articles);
+    if (category) {
+      fetchArticlesByTopic(category).then((response) => {
+        setArticles(response);
         setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
       });
-  }, []);
+    } else
+      fetchArticles()
+        .then(({ data }) => {
+          setArticles(data.articles);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }, [category]);
 
   if (isLoading) {
     return <p className="loading">Loading...</p>;
