@@ -65,6 +65,14 @@ button:hover {
   color: var(--secondary-color);
 }
 
+.button:hover .categories {
+  display: block;
+}
+
+.categories:hover {
+  display: block;
+}
+
 button:disabled {
   background-color: white;
   color: var(--secondary-color);
@@ -77,6 +85,7 @@ button:disabled {
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+  position: relative;
 }
 
 .navBar p {
@@ -84,8 +93,36 @@ button:disabled {
   color: white;
 }
 
-.dropdown {
-  margin-right: 10px;
+.sort {
+  margin-left: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  transition: all 0.3s ease;
+}
+
+.dropdown-content p:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .navBar-links a {

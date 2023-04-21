@@ -16,12 +16,6 @@ export const fetchArticles = () => {
   });
 };
 
-export const fetchArticlesByTopic = (topic) => {
-  return newsAPI.get(`/articles?category_name=${topic}`).then((response) => {
-    return response.data;
-  });
-};
-
 export const fetchArticleById = (id) => {
   return newsAPI.get(`/articles/${id}`).then((response) => {
     return response.data;
@@ -54,5 +48,14 @@ export const postComment = (newComment) => {
 export const fetchUsers = () => {
   return newsAPI.get("/users").then((response) => {
     return response.data;
+  });
+};
+
+export const fetchArticlesByTopic = (category) => {
+  return newsAPI.get("/articles").then(({ data }) => {
+    const filteredArticles = data.articles.filter(
+      (article) => article.topic === category
+    );
+    return filteredArticles;
   });
 };

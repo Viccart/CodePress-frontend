@@ -25,6 +25,10 @@ function App() {
             path="/articles/:id"
             element={<SingleArticle currentUser={currentUser} />}
           />
+          <Route
+            path="/articles/categories/:category?"
+            element={<ArticlesList currentUser={currentUser} />}
+          />
         </Routes>
       </main>
     </div>
