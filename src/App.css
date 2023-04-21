@@ -79,6 +79,15 @@ button:disabled {
   padding: 0 50px;
 }
 
+.navBar p {
+  margin-left: auto;
+  color: white;
+}
+
+.dropdown {
+  margin-right: 10px;
+}
+
 .navBar-links a {
   margin-right: 20px;
   color: white;

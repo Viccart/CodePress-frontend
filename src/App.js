@@ -8,12 +8,12 @@ import React, { useState } from "react";
 import Login from "./components/Login";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState("tickle122");
 
   return (
     <div className="App">
       <Header />
-      <Nav setCurrentUser={setCurrentUser} />
+      <Nav currentUser={currentUser} />
       <main className="articles-list">
         <Routes>
           <Route path="/" element={<ArticlesList />} />

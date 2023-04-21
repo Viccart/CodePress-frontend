@@ -37,7 +37,6 @@ export default function Comments({ currentUser, articleId }) {
       <AddComment
         currentUser={currentUser}
         articleId={articleId}
-        isLoading={isLoading}
         setComments={setComments}
       />
     </div>

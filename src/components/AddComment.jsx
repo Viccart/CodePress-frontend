@@ -1,29 +1,32 @@
 import { useState } from "react";
 import { postComment } from "../api";
 
-export default function AddComment({ articleId, isLoading, setComments }) {
+export default function AddComment({ articleId, setComments, currentUser }) {
   const [commentBody, setCommentBody] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [err, setErr] = useState("");
 
   const handleSubmit = (e) => {
+    setIsSubmitted(true);
     e.preventDefault();
-    console.log("form submitted");
 
     const newComment = {
-      username: "tickle122",
+      username: currentUser,
       body: commentBody,
       article_id: articleId,
     };
 
-    postComment(newComment).then((response) => {
-      setComments((prevComments) => [...prevComments, response.data]);
-      setIsSubmitted(true);
-    });
+    postComment(newComment)
+      .then((response) => {
+        setComments((prevComments) => [...prevComments, response.data]);
+        setCommentBody("");
+        setIsSubmitted(false);
+      })
+      .catch(() => {
+        setIsSubmitted(false);
+        setErr("something went wrong, try again later!");
+      });
   };
-
-  if (isSubmitted) {
-    return <h2>Your comment has been submitted</h2>;
-  }
 
   return (
     <form id="submitComment" onSubmit={handleSubmit}>
@@ -36,9 +39,10 @@ export default function AddComment({ articleId, isLoading, setComments }) {
         onChange={(e) => setCommentBody(e.target.value)}
       ></textarea>
       <br></br>
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" disabled={isSubmitted}>
         Submit Comment
       </button>
+      {err ? <p>{err}</p> : null}
     </form>
   );
 }
