@@ -40,4 +40,19 @@ export const patchArticle = (id) => {
   });
 };
 
+export const postComment = (newComment) => {
+  console.log(newComment);
+  const { article_id, body, username } = newComment;
+  const data = { body, username };
+  return newsAPI
+    .post(`/articles/${article_id}/comments`, data)
+    .then((response) => {
+      return response;
+    });
+};
 
+export const fetchUsers = () => {
+  return newsAPI.get("/users").then((response) => {
+    return response.data;
+  });
+};

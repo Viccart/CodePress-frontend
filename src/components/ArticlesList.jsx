@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { fetchArticles, fetchArticlesByTopic } from "../api";
+import { fetchArticles } from "../api";
 import { Link } from "react-router-dom";
 
-export default function ArticlesList() {
+export default function ArticlesList({ currentUser }) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
