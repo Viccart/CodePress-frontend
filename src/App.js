@@ -5,21 +5,30 @@ import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
-import Login from "./components/Login";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("tickle122");
+  const [sortOrder, setSortOrder] = useState("recent");
+
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+  };
 
   return (
     <div className="App">
       <Header />
-      <Nav currentUser={currentUser} />
+      <Nav currentUser={currentUser} handleSortChange={handleSortChange} />
       <main className="articles-list">
         <Routes>
-          <Route path="/" element={<ArticlesList />} />
+          <Route path="/" element={<ArticlesList sortCriteria={sortOrder} />} />
           <Route
             path="/articles"
-            element={<ArticlesList currentUser={currentUser} />}
+            element={
+              <ArticlesList
+                currentUser={currentUser}
+                sortCriteria={sortOrder}
+              />
+            }
           />
           <Route
             path="/articles/:id"
@@ -27,7 +36,12 @@ function App() {
           />
           <Route
             path="/articles/categories/:category?"
-            element={<ArticlesList currentUser={currentUser} />}
+            element={
+              <ArticlesList
+                currentUser={currentUser}
+                sortCriteria={sortOrder}
+              />
+            }
           />
         </Routes>
       </main>

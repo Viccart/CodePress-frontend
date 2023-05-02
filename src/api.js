@@ -51,11 +51,26 @@ export const fetchUsers = () => {
   });
 };
 
-export const fetchArticlesByTopic = (category) => {
+export const fetchArticlesByTopic = (category, sortOrder) => {
   return newsAPI.get("/articles").then(({ data }) => {
     const filteredArticles = data.articles.filter(
-      (article) => article.topic === category
+      (article) => !category || article.topic === category
     );
-    return filteredArticles;
+    const sortedArticles = filteredArticles.sort((a, b) => {
+      switch (sortOrder.criteria) {
+        case "alphabetical":
+          return a.title.localeCompare(b.title);
+        case "votes":
+          return b.votes - a.votes;
+        case "recent":
+          return new Date(b.created_at) - new Date(a.created_at);
+        default:
+          return 0;
+      }
+    });
+    if (sortOrder.order === "asc") {
+      sortedArticles.reverse();
+    }
+    return sortedArticles;
   });
 };
