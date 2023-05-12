@@ -6,10 +6,11 @@ This is a front-end project for a News website called "CodePress. The website al
 
 The tech stack used in this project includes:
 
-React
-HTML
-Axios
-API
+`React`
+`HTML`
+`Axios`
+
+## API
 This project interacts with a back-end API to fetch the necessary data. You can find the code for the back-end API at https://github.com/Viccart/CodePress-backend
 
 ## Usage
