@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# CodePress News Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a front-end project for a News website called "CodePress. The website allows users to view a list of news articles, explore different categories of articles, query the articles based on sorting and ordering criteria, post comments to articles, and like articles. The app is designed to be responsive and works well on mobile devices and small screens.
 
-## Available Scripts
+## Tech Stack
+
+The tech stack used in this project includes:
+
+React
+HTML
+Axios
+API
+This project interacts with a back-end API to fetch the necessary data. You can find the code for the back-end API at https://github.com/Viccart/CodePress-backend
+
+## Usage
+
+To use this app, follow these steps:
+
+#### Clone the repository:
+
+`git clone https://github.com/Viccart/CodePress-frontend.git`
+
+#### Install the dependencies:
+
+`npm install`
+
+#### Start the app:
+
+`npm start`
+
+#### Open the app in your browser:
+
+`http://localhost:3000`
+
+#### Features
+
+The key features of this app include:
+
+Viewing a list of articles
+Viewing a single article
+Exploring different categories of articles
+Querying the listed articles based on sorting and ordering criteria
+Posting comments to articles
+Deleting comments posted by the user
+Liking articles
+
+#### Here's a demo of the app in action:
+
+`https://codepress.netlify.app/`
+
+Deployment
+This app is deployed on Netlify.
+
+#### Getting Started with Create React App
+
+This project was bootstrapped with Create React App.
+
+#### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+`npm start`: Runs the app in the development mode. Open `http://localhost:3000` to view it in the browser.
+`npm run build`: Builds the app for production to the build folder.
+`npm run eject`: Ejects the project from Create React App.
+Please refer to the Create React App documentation for more information on these scripts and customization options.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Note: Ejecting from Create React App is a one-way operation and should be done with caution.
