@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
+import NotFound from "./components/NotFound";
 import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 
@@ -43,6 +44,7 @@ function App() {
               />
             }
           />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
