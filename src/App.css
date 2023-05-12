@@ -313,3 +313,21 @@ a:active {
   height: 90px;
   width: 100px;
 }
+
+.delete-button {
+  height: 20px;
+  width: 50px;
+  font-size: 0.7rem;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-text {
+  color: var(--text-color-lightest);
+}
+
+.not-found {
+  color: var(--text-color-lightest);
+}

@@ -5,21 +5,36 @@ const newsAPI = axios.create({
 });
 
 export const fetchTopics = () => {
-  return newsAPI.get("/topics").then((response) => {
-    return response.data.topics;
-  });
+  return newsAPI
+    .get("/topics")
+    .then((response) => {
+      return response.data.topics;
+    })
+    .catch((error) => {
+      return error;
+    });
 };
 
 export const fetchArticles = () => {
-  return newsAPI.get("/articles").then((response) => {
-    return response;
-  });
+  return newsAPI
+    .get("/articles")
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
 };
 
 export const fetchArticleById = (id) => {
-  return newsAPI.get(`/articles/${id}`).then((response) => {
-    return response.data;
-  });
+  return newsAPI
+    .get(`/articles/${id}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
 };
 
 export const fetchCommentsByArticleId = (id) => {
@@ -72,5 +87,11 @@ export const fetchArticlesByTopic = (category, sortOrder) => {
       sortedArticles.reverse();
     }
     return sortedArticles;
+  });
+};
+
+export const deleteComment = (id) => {
+  return newsAPI.delete(`/comments/${id}`).then((response) => {
+    console.log("deleted");
   });
 };

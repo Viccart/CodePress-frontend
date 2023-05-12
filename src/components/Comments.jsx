@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { fetchCommentsByArticleId } from "../api";
+import { fetchCommentsByArticleId, deleteComment } from "../api";
 import { useState, useEffect } from "react";
 import AddComment from "./AddComment";
 
@@ -21,6 +21,18 @@ export default function Comments({ currentUser, articleId }) {
       });
   }, [id]);
 
+  const handleDeleteComment = (commentId) => {
+    deleteComment(commentId)
+      .then(() => {
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.comment_id !== commentId)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="comments-section">
       <h4>Comments</h4>
@@ -31,6 +43,14 @@ export default function Comments({ currentUser, articleId }) {
           <div key={comment.comment_id}>
             <p>{comment.body}</p>
             <p>By: {comment.author}</p>
+            {currentUser && currentUser.id === comment.authorId && (
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteComment(comment.comment_id)}
+              >
+                Delete
+              </button>
+            )}
           </div>
         ))
       )}
