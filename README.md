@@ -8,6 +8,7 @@ The tech stack used in this project includes:
 
 `React`
 `HTML`
+`CSS`
 `Axios`
 
 ## API
